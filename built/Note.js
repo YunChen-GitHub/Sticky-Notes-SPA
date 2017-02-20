@@ -94,17 +94,10 @@ var Board = React.createClass({
         this.uniqueId = this.uniqueId || 0;
         return this.uniqueId++;
     },
+    // Preparing some initial notes to display
     componentWillMount: function () {
         var self = this;
         var initialNoteNumber = this.props.count;
-        // if(this.props.count) {
-        //     $.getJSON("http://baconipsum.com/api/?type=all-meat&sentences=" +
-        //         this.props.count + "&start-with-lorem=1&callback=?", function(results){
-        //             results[0].split('. ').forEach(function(sentence){
-        //                 self.add(sentence.substring(0,40));
-        //             });
-        //         });
-        // }
         if (initialNoteNumber) {
             for (var i = 0; i < initialNoteNumber; i++) {
                 self.add("I'm a sticky note...");
@@ -129,6 +122,7 @@ var Board = React.createClass({
         arr.splice(i, 1);
         this.setState({ notes: arr });
     },
+    // Preparing each Note component with props and event handlers
     eachNote: function (note, i) {
         return React.createElement(
             Note,
